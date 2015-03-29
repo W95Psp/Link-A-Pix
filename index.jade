@@ -1,0 +1,57 @@
+html(ng-app='app')
+	head
+		|<meta charset="utf-8">
+		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js")
+		link(href='http://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
+		link(href='style.css', rel='stylesheet', type='text/css')
+		script(src='script.js')
+  
+	body(ng-controller='ctrl')
+		.content
+			h1 Link-a-pix
+			br(ng-init='')
+			div.page(ng-if='stepOne')
+				p Rensignez les valeurs du tableau initial ici.
+					button(ng-click='empty()') Vider
+				| Dimensions : (
+				input.dim(ng-model='currentSize[0]')
+				|  x
+				input.dim(ng-model='currentSize[1]')
+				span  )
+				br
+				br
+				br
+				table
+					tr(ng-repeat='(i, line) in data track by $index')
+						td(ng-repeat='(j, cell) in line track by $index')
+							input(ng-model='data[i][j]', valeur='{{data[i][j]}}')
+				button(ng-click='process(data);') Trouver les solution(s)
+			div.page(ng-if='!stepOne')
+				h2 Solutions trouvée(s)
+				p Pour afficher une solution, cliquez dessus.
+				ul
+					li.solution(ng-repeat='(k, result) in results', ng-click='$parent.selResult = result;$parent.PATH_SEL="none";', state='{{result==$parent.selResult}}')
+						| Solution {{k+1}}
+				br
+				b Afficher : 
+				button(ng-repeat='(k, item) in selResult.paths', state='{{$parent.PATH_SEL==selResult.paths[k]}}', ng-click='$parent.PATH_SEL = selResult.paths[k]') Chemin {{k}}
+				button(state='{{PATH_SEL=="none"}}',  ng-click='PATH_SEL = "none";') Rien
+				br
+				br
+				br
+				table(ng-if='selResult!=null')
+					tr(ng-repeat='(i, line) in a = (selResult.paths | buildTable:PATH_SEL) track by $index')
+						td(ng-repeat='(j, cell) in line track by $index', style='background-color: {{["white", "black", "gray"][cell]}}')
+							span(ng-if='data[i][j]!=0', style='color: {{cell?"white":"red"}};') {{data[i][j]}}
+				br
+				br
+				br
+				| Détail du chemin : 
+				{{JSON.stringify(PATH_SEL)}}
+				br
+				br
+				br
+				button(ng-click='$parent.stepOne = true;') Retour
+				br
+				br
+				br

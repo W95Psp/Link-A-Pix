@@ -1,0 +1,45 @@
+
+<html ng-app="app">
+  <head><meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="script.js"></script>
+  </head>
+  <body ng-controller="ctrl">
+    <div class="content">
+      <h1>Link-a-pix</h1><br ng-init=""/>
+      <div ng-if="stepOne" class="page">
+        <p>Rensignez les valeurs du tableau initial ici.
+          <button ng-click="empty()">Vider</button>
+        </p>Dimensions : (
+        <input ng-model="currentSize[0]" class="dim"/> x
+        <input ng-model="currentSize[1]" class="dim"/><span> )</span><br/><br/><br/>
+        <table>
+          <tr ng-repeat="(i, line) in data track by $index">
+            <td ng-repeat="(j, cell) in line track by $index">
+              <input ng-model="data[i][j]" valeur="{{data[i][j]}}"/>
+            </td>
+          </tr>
+        </table>
+        <button ng-click="process(data);">Trouver les solution(s)</button>
+      </div>
+      <div ng-if="!stepOne" class="page">
+        <h2>Solutions trouvée(s)</h2>
+        <p>Pour afficher une solution, cliquez dessus.</p>
+        <ul>
+          <li ng-repeat="(k, result) in results" ng-click="$parent.selResult = result;$parent.PATH_SEL=&quot;none&quot;;" state="{{result==$parent.selResult}}" class="solution">Solution {{k+1}}</li>
+        </ul><br/><b>Afficher : </b>
+        <button ng-repeat="(k, item) in selResult.paths" state="{{$parent.PATH_SEL==selResult.paths[k]}}" ng-click="$parent.PATH_SEL = selResult.paths[k]">Chemin {{k}}</button>
+        <button state="{{PATH_SEL==&quot;none&quot;}}" ng-click="PATH_SEL = &quot;none&quot;;">Rien</button><br/><br/><br/>
+        <table ng-if="selResult!=null">
+          <tr ng-repeat="(i, line) in a = (selResult.paths | buildTable:PATH_SEL) track by $index">
+            <td ng-repeat="(j, cell) in line track by $index" style="background-color: {{[&quot;white&quot;, &quot;black&quot;, &quot;gray&quot;][cell]}}"><span ng-if="data[i][j]!=0" style="color: {{cell?&quot;white&quot;:&quot;red&quot;}};">{{data[i][j]}}</span></td>
+          </tr>
+        </table><br/><br/><br/>Détail du chemin : 
+        {{JSON.stringify(PATH_SEL)}}<br/><br/><br/>
+        <button ng-click="$parent.stepOne = true;">Retour</button><br/><br/><br/>
+      </div>
+    </div>
+  </body>
+</html>

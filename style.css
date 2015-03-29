@@ -1,0 +1,106 @@
+* {
+  font-family: 'Open Sans';
+}
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  padding: 20;
+  margin: 0;
+  text-align: center;
+}
+table {
+  margin: auto;
+  border-collapse: collapse;
+}
+table td {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+table td input {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+}
+table td input[valeur='0'] {
+  color: #b3b3b3;
+}
+table td input[valeur='1'] {
+  color: #a98a0a;
+  font-weight: bold;
+}
+table td input[valeur='2'] {
+  color: #586263;
+  font-weight: bold;
+}
+table td input[valeur='3'] {
+  color: #12846d;
+  font-weight: bold;
+}
+table td input[valeur='4'] {
+  color: #208f4f;
+  font-weight: bold;
+}
+table td input[valeur='5'] {
+  color: #6e3a84;
+  font-weight: bold;
+}
+table td input[valeur='6'] {
+  color: #b52516;
+  font-weight: bold;
+}
+table td input[valeur='7'] {
+  color: #a65813;
+  font-weight: bold;
+}
+table td input[valeur='8'] {
+  color: #1e5d87;
+  font-weight: bold;
+}
+table td input[valeur='9'] {
+  color: #1b7a43;
+  font-weight: bold;
+}
+table td input[valeur='10'] {
+  color: #1d6ca1;
+  font-weight: bold;
+}
+table td input[valeur='11'] {
+  color: #1f2b38;
+  font-weight: bold;
+}
+table tr:nth-child(2n) td:nth-child(2n) {
+  background-color: #fffaff;
+}
+table tr:nth-child(2n+1) td:nth-child(2n+1) {
+  background-color: #fffaff;
+}
+.content {
+  width: 800px;
+  margin: auto;
+  background-image: url("back.png");
+  box-shadow: 0px 0px 8px 0px #ddd;
+  padding: 20px;
+  padding-bottom: 100px;
+}
+li.solution {
+  display: inline-block;
+  width: 150px;
+  cursor: normal;
+}
+li.solution[state='true'] {
+  font-weight: bold;
+}
+button[state='true'] {
+  font-weight: bold;
+}
+input.dim {
+  width: 50px;
+  text-align: center;
+}
