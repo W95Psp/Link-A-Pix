@@ -6,3 +6,7 @@ Some stuff could be muuuch more optimised, that's really not the point here! (I 
 That's a solver in JS for this problem:
 
 http://www.lirmm.fr/~retore/projetsL2/projetLinPix.pdf
+
+
+## Demo
+Try it online http://htmlpreview.github.io/?https://github.com/W95Psp/Link-A-Pix/blob/master/index.html
