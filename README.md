@@ -3,9 +3,20 @@ Sorry for the mess this code is, it's made of few hours and coffee (not the lang
 
 Some stuff could be muuuch more optimised, that's really not the point here! (I don't what the point it is, in fact x) )
 
+<!--- title Link-A-Pix --->
+## (en) Sum-up
+<!--- en --->
 That's a solver in JS for this problem:
 
 http://www.lirmm.fr/~retore/projetsL2/projetLinPix.pdf
+<!--- /en --->
+## (fr) Résumé
+<!--- fr --->
+C'est un solveur en JavaScript pour ce problème :
+
+http://www.lirmm.fr/~retore/projetsL2/projetLinPix.pdf
+<!--- /fr --->
+
 
 
 ## Demo
